@@ -1,0 +1,179 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure
+                    <input class="inp-style" type="date" name="">
+                </label"></div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>                    
+                    <label for="">First Class ($150)</label>
+                    <div>
+                        <button onclick="numChange(true)" class="btn"><i class="fas fa-plus"></i></button>
+                        <input id="numCount" class="inp-style inp-width" type="text" name="" value="0">
+                        <button onclick="numChange(false)" class="btn"><i class="fas fa-minus"></i></button>
+                    </div>
+                    <h5 id="totalFirst"> Total in first class $: </h5>
+                </div>
+            </div>
+           
+            <div>                    
+                <label for="">Economy Class ($100)</label>
+                <div>
+                    <button onclick="numChangeSecond(true)" class="btn"><i class="fas fa-plus"></i></button>
+                    <input id="numCountSecond" class="inp-style inp-width" type="text" name="" value="0">
+                    <button onclick="numChangeSecond(false)" class="btn"><i class="fas fa-minus"></i></button>
+                </div>
+                <h5 id="totalSecond"> Total in economy class $: </h5>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subTotal">$00</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat">$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="netTotal">$550</p>
+                    </div>
+                </div>
+            </div>
+            <button id="bookNow" class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+        <!--Thank You-->
+</main>
+
+<script>
+
+ // coding for first class:
+ function numChange(isChange){
+     const totalEvent = document.getElementById('numCount');
+     const eventConvert = parseInt(totalEvent.value);
+     let finalCount = eventConvert;
+     if(isChange == true){
+        finalCount = eventConvert + 1;
+     }
+
+     if(isChange == false && eventConvert > 0){
+        finalCount = eventConvert - 1;        
+     }
+
+     totalEvent.value = finalCount;
+
+     const finalTotal = finalCount * 150;
+     document.getElementById('totalFirst').innerText = 'Total in first class $:' + finalTotal;
+
+ }
+
+ // coding for economy class:
+ function numChangeSecond(isChangeSecond){
+     const totalEventSecond = document.getElementById('numCountSecond');
+     const eventConvertSecond = parseInt(totalEventSecond.value);
+     let finalCountSecond = eventConvertSecond;
+     if(isChangeSecond == true){
+        finalCountSecond = eventConvertSecond + 1;
+     }
+
+     if(isChangeSecond == false && eventConvertSecond > 0){
+        finalCountSecond = eventConvertSecond - 1;        
+     }
+
+     totalEventSecond.value = finalCountSecond;
+
+     const finalTotalSecond = finalCountSecond * 100;
+     document.getElementById('totalSecond').innerText = 'Total in economy class $:' + finalTotalSecond;
+ }
+
+//alart:
+
+    document.getElementById('bookNow').addEventListener('click', function(){
+        alert('Thank you');
+    });
+
+
+ /*
+    function netTotal(){
+        const newFirstClass = document.getElementById('totalFirst');
+        console.log(newFirstClass);
+
+        const newFirstClassConvert = parseInt(newFirstClass.value);
+        const newTotal = finalCount * 150 + finalCountSecond * 100;
+
+        console.log(newTotal);
+
+        document.getElementById('subTotal').innerText = newTotal;
+    }
+
+    function netCalculation(final){
+
+        const finalCal = document.getElementById(final + '-count');
+        const finalCalConvert = parseInt(finalCal.value);
+        return finalCalConvert;
+
+    } */
+
+</script>
+
+</body></html>
